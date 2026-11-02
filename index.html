@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gridline Institute | Sysadmin Training for the Mid-Career Jump</title>
+<meta name="description" content="Professional development courses for system administrators in Portland, OR. Gridline Institute LLC — 346 graduates, hands-on labs, real-world remote desktop training with Supremo.">
+<meta property="og:title" content="Gridline Institute | Sysadmin Training for the Mid-Career Jump">
+<meta property="og:description" content="Professional development courses for system administrators in Portland, OR. Hands-on labs and remote desktop training since 2015.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{SITE_URL}}/">
+<meta property="og:locale" content="en_US">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpolygon points='16,1 29,8.5 29,23.5 16,31 3,23.5 3,8.5' fill='%23be185d'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='11' fill='white'%3EGI%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="{{SITE_URL}}/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          50: '#fdf2f8',
+          100: '#fce7f3',
+          200: '#fbcfe8',
+          300: '#f9a8d4',
+          400: '#f472b6',
+          500: '#ec4899',
+          600: '#be185d',
+          700: '#9d174d',
+          800: '#831843',
+          900: '#500724',
+          950: '#2d0413'
+        }
+      },
+      fontFamily: {
+        sans: ['Rubik', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        heading: ['Epilogue', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-white text-gray-700 font-sans antialiased">
+
+<!-- HEADER — Top Bar + Nav (two rows) -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white shadow-sm">
+  <!-- Top bar -->
+  <div class="bg-brand-950 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between h-8 text-xs">
+      <a href="tel:+15032768134" class="hover:text-brand-300 transition-colors">+1 (503) 276-8134</a>
+      <span class="hidden sm:inline text-brand-300">Mon–Fri 8:00 AM – 5:00 PM PT</span>
+      <a href="mailto:info@gridlineinstitute.com" class="hover:text-brand-300 transition-colors">info@gridlineinstitute.com</a>
+    </div>
+  </div>
+  <!-- Main nav -->
+  <div class="bg-white border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="flex items-center justify-between h-14">
+        <a href="#" class="flex items-center gap-2 group">
+          <svg class="w-7 h-7" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,1 29,8.5 29,23.5 16,31 3,23.5 3,8.5" fill="#be185d"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-weight="700" font-size="11" fill="white">GI</text></svg>
+          <span class="font-heading font-bold text-brand-950 text-base tracking-tight">Gridline Institute</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="#courses" class="text-sm text-gray-600 hover:text-brand-600 transition-colors">Courses</a>
+          <a href="#why-us" class="text-sm text-gray-600 hover:text-brand-600 transition-colors">Why Us</a>
+          <a href="#results" class="text-sm text-gray-600 hover:text-brand-600 transition-colors">Results</a>
+          <a href="#faq" class="text-sm text-gray-600 hover:text-brand-600 transition-colors">FAQ</a>
+          <a href="#contact" class="text-sm text-gray-600 hover:text-brand-600 transition-colors">Contact</a>
+        </nav>
+        <div class="hidden md:block">
+          <a href="#contact" class="inline-flex items-center px-5 py-2 bg-brand-600 text-white text-sm font-semibold uppercase tracking-wide hover:bg-brand-700 transition-all">Get a Quote</a>
+        </div>
+        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-brand-600" aria-label="Open menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU (Slide-From-Right) -->
+<div id="mobile-overlay" class="fixed inset-0 z-50 bg-black/40 hidden"></div>
+<div id="mobile-panel" class="fixed top-0 right-0 z-50 w-3/4 max-w-xs h-full bg-white shadow-2xl flex flex-col">
+  <div class="flex items-center justify-between p-4 border-b border-gray-100">
+    <span class="font-heading font-bold text-brand-950 text-sm">Menu</span>
+    <button id="mobile-menu-close" class="p-1 text-gray-500 hover:text-brand-600" aria-label="Close menu">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <nav class="flex-1 px-4 py-6 space-y-4">
+    <a href="#courses" class="block text-base font-medium text-gray-700 hover:text-brand-600">Courses</a>
+    <a href="#why-us" class="block text-base font-medium text-gray-700 hover:text-brand-600">Why Us</a>
+    <a href="#results" class="block text-base font-medium text-gray-700 hover:text-brand-600">Results</a>
+    <a href="#faq" class="block text-base font-medium text-gray-700 hover:text-brand-600">FAQ</a>
+    <a href="#contact" class="block text-base font-medium text-gray-700 hover:text-brand-600">Contact</a>
+  </nav>
+  <div class="p-4 border-t border-gray-100">
+    <a href="tel:+15032768134" class="block text-sm text-brand-600 font-medium mb-3">+1 (503) 276-8134</a>
+    <a href="#contact" class="block w-full text-center px-5 py-2.5 bg-brand-600 text-white text-sm font-semibold uppercase tracking-wide">Get a Quote</a>
+  </div>
+</div>
+
+<main>
+<!-- HERO — Minimal Text-Only, Light & Airy bg -->
+<section class="pt-32 sm:pt-40 pb-20 sm:pb-28 bg-white" data-animate>
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+    <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-brand-950 mb-6 leading-[1.08]">Still Sending Sysadmins to Training That Doesn't Stick?</h1>
+    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed">Gridline Institute runs four hands-on tracks for mid-career system administrators — including remote desktop operations with Supremo. We've trained 346 people since 2015. Most of them will tell you the labs mattered more than the slides.</p>
+    <div class="flex flex-wrap justify-center gap-4 mb-8">
+      <a href="#contact" class="inline-flex items-center px-7 py-3 bg-brand-600 text-white font-semibold uppercase tracking-wide hover:bg-brand-700 transition-all">Get a Custom Quote</a>
+      <a href="#courses" class="inline-flex items-center px-7 py-3 border-2 border-brand-600 text-brand-600 font-semibold uppercase tracking-wide hover:bg-brand-50 transition-all">See the Courses</a>
+    </div>
+    <p class="text-sm text-gray-500">Portland, OR &middot; Remote-first since 2020 &middot; Cohorts of 12 max</p>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- SOCIAL PROOF — Numbers Bar -->
+<section class="py-16 bg-brand-50" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-heading font-bold text-3xl text-brand-600">346</p>
+        <p class="text-sm text-gray-600 mt-1">Graduates Since 2015</p>
+      </div>
+      <div>
+        <p class="font-heading font-bold text-3xl text-brand-600">11</p>
+        <p class="text-sm text-gray-600 mt-1">Years Running</p>
+      </div>
+      <div>
+        <p class="font-heading font-bold text-3xl text-brand-600">89%</p>
+        <p class="text-sm text-gray-600 mt-1">Report Career Progress in 12 Mo.</p>
+      </div>
+      <div>
+        <p class="font-heading font-bold text-3xl text-brand-600">4.6</p>
+        <p class="text-sm text-gray-600 mt-1">Avg. Student Rating</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto my-0"></div>
+
+<!-- COURSES / SERVICES — By Use Case framing -->
+<section id="courses" class="py-20 sm:py-28 bg-white" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="mb-16">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950 mb-2"><span class="text-brand-600">Four use cases.</span> One training philosophy: break things, fix things, learn things.</h2>
+      <p class="text-gray-600 mt-4 max-w-xl">Every track ends with a capstone project you can actually show in interviews. We don't teach theory for theory's sake — if it can't be demonstrated on a live server, it's probably not in the curriculum.</p>
+    </div>
+
+    <div class="space-y-8">
+      <!-- Course 1 -->
+      <div class="border-l-4 border-brand-500 bg-white pl-6 py-5">
+        <div class="flex items-center gap-3 mb-2">
+          <svg class="w-5 h-5 text-brand-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/></svg>
+          <h3 class="font-heading font-bold text-xl text-brand-900">Remote Desktop Operations</h3>
+        </div>
+        <p class="text-gray-600 mb-3">This is where Supremo comes in. You'll learn to set up, configure, and manage remote support sessions end-to-end — from unattended access configuration to session recording and compliance logging. We chose Supremo because it's lightweight enough to deploy in under five minutes but has the depth for enterprise-scale operations. The lab exercises use real multi-site scenarios: a main office, two branch offices, and a handful of remote workers. You troubleshoot connection issues, configure access policies, and run supervised remote sessions just like you would on a Monday morning when three people can't print.</p>
+        <p class="text-sm text-gray-500">Covers: unattended access setup, session permissions, address book management, multi-monitor navigation, file transfer during sessions, and audit trail configuration.</p>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="border-l-4 border-brand-500 bg-white pl-6 py-5">
+        <div class="flex items-center gap-3 mb-2">
+          <svg class="w-5 h-5 text-brand-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
+          <h3 class="font-heading font-bold text-xl text-brand-900">Security Hardening for Ops Teams</h3>
+        </div>
+        <p class="text-gray-600 mb-3">Not a checkbox compliance course. You'll harden live systems, run vulnerability scans on lab networks, and write incident response runbooks that aren't just wishful thinking. One of the exercises involves responding to a simulated breach at 2 AM — because that's when they happen.</p>
+        <p class="text-sm text-gray-500">Covers: access controls, network segmentation, log analysis, security policy writing, and post-incident review.</p>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="border-l-4 border-brand-500 bg-white pl-6 py-5">
+        <div class="flex items-center gap-3 mb-2">
+          <svg class="w-5 h-5 text-brand-600" viewBox="0 0 20 20" fill="currentColor"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/></svg>
+          <h3 class="font-heading font-bold text-xl text-brand-900">Infrastructure Automation</h3>
+        </div>
+        <p class="text-gray-600">Scripting, configuration management, repeatable deployments. The kind of work that survives the person who wrote it leaving the company. You start with messy, undocumented environments — because that's every new job — and automate your way out.</p>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="border-l-4 border-brand-500 bg-white pl-6 py-5">
+        <div class="flex items-center gap-3 mb-2">
+          <svg class="w-5 h-5 text-brand-600" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11 4a1 1 0 10-2 0v4a1 1 0 102 0V7zm-3 1a1 1 0 10-2 0v3a1 1 0 102 0V8zM8 9a1 1 0 00-2 0v2a1 1 0 102 0V9z" clip-rule="evenodd"/></svg>
+          <h3 class="font-heading font-bold text-xl text-brand-900">Monitoring &amp; Incident Response</h3>
+        </div>
+        <p class="text-gray-600 mb-3">Build observability stacks from scratch. Write alerting rules that actually mean something. And — honestly the part nobody else teaches — write postmortems that help the team learn instead of just assigning blame.</p>
+        <ul class="space-y-1 text-sm text-gray-500">
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Metrics pipelines and log aggregation</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Incident command during simulated outages</li>
+          <li class="flex items-start gap-2"><svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Blameless postmortem writing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <p class="text-sm text-gray-500 max-w-lg mx-auto">Honest caveat: we focus on infrastructure and operations — not application development, not management consulting. If you need deep coding courses, we're probably not the right fit. And that's fine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- SUPREMO DEEP DIVE -->
+<section class="py-20 sm:py-28 bg-brand-50" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="mb-14">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950 mb-2"><span class="text-brand-600">How Supremo works</span> — and why we teach it</h2>
+      <p class="text-gray-600 mt-4 max-w-xl">We picked Supremo as our remote desktop platform for the labs because it hits the sweet spot between simplicity and real-world capability. Here's what our students actually work with:</p>
+    </div>
+
+    <!-- How it works steps -->
+    <div class="grid sm:grid-cols-3 gap-8 mb-12">
+      <div class="text-center">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-brand-100 text-brand-700 font-heading font-bold text-xl rounded-full mb-4">1</span>
+        <h3 class="font-heading font-semibold text-lg text-brand-900 mb-2">Connect in Seconds</h3>
+        <p class="text-sm text-gray-600">Supremo generates a unique ID and password for each machine. Enter the remote machine's ID, authenticate, and you're connected. No complex network configuration, no VPN tunnels to set up first — though our labs do teach you when those matter.</p>
+      </div>
+      <div class="text-center">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-brand-100 text-brand-700 font-heading font-bold text-xl rounded-full mb-4">2</span>
+        <h3 class="font-heading font-semibold text-lg text-brand-900 mb-2">Unattended Access &amp; Address Books</h3>
+        <p class="text-sm text-gray-600">For managed environments, Supremo supports unattended access — set it once, connect anytime without someone on the other end clicking "allow." The address book organizes machines by group, which matters when you're managing 50+ endpoints across sites.</p>
+      </div>
+      <div class="text-center">
+        <span class="inline-flex items-center justify-center w-12 h-12 bg-brand-100 text-brand-700 font-heading font-bold text-xl rounded-full mb-4">3</span>
+        <h3 class="font-heading font-semibold text-lg text-brand-900 mb-2">Session Control &amp; Audit</h3>
+        <p class="text-sm text-gray-600">File transfers mid-session, multi-monitor support, chat, and — the part compliance officers care about — full session recording and connection logs. Our lab exercises walk through configuring these for a regulated environment where audit trails aren't optional.</p>
+      </div>
+    </div>
+
+    <div class="bg-white border border-brand-100 rounded-lg p-6 sm:p-8">
+      <h3 class="font-heading font-semibold text-lg text-brand-900 mb-3">Why Supremo specifically?</h3>
+      <p class="text-gray-600 mb-3">Look, there are plenty of remote desktop tools out there. We went with Supremo for three practical reasons: it runs without requiring a dedicated server infrastructure, the licensing model works for training environments, and it covers the feature set that most mid-market IT teams actually use — without the complexity overhead of enterprise-tier platforms that take weeks to deploy properly.</p>
+      <p class="text-gray-600">That said, our remote desktop track teaches concepts that transfer to any tool. The muscle memory around session security, unattended access policies, and remote troubleshooting workflows — that part is tool-agnostic. Supremo is just the vehicle we use to teach it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- HOW IT WORKS — Numbered Cards -->
+<section class="py-20 sm:py-28 bg-white" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950"><span class="text-brand-600">Three steps</span> from inquiry to enrolled</h2>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-8">
+      <div class="bg-brand-50 border border-brand-100 p-6 text-center">
+        <span class="font-heading font-extrabold text-5xl text-brand-200 leading-none">01</span>
+        <h3 class="font-heading font-bold text-lg text-brand-900 mt-3 mb-2">Get a Quote</h3>
+        <p class="text-sm text-gray-600">Tell us how many people, which tracks interest you, and your timeline. We'll put together pricing within 48 hours. No generic rate cards — every quote reflects your actual situation.</p>
+      </div>
+      <div class="bg-brand-50 border border-brand-100 p-6 text-center">
+        <span class="font-heading font-extrabold text-5xl text-brand-200 leading-none">02</span>
+        <h3 class="font-heading font-bold text-lg text-brand-900 mt-3 mb-2">Pick a Cohort</h3>
+        <p class="text-sm text-gray-600">Cohorts run every 6 weeks. Evening sessions, Saturday mornings, or intensive week-long blocks — your call. Once you're in, you get access to the lab environment immediately.</p>
+      </div>
+      <div class="bg-brand-50 border border-brand-100 p-6 text-center">
+        <span class="font-heading font-extrabold text-5xl text-brand-200 leading-none">03</span>
+        <h3 class="font-heading font-bold text-lg text-brand-900 mt-3 mb-2">Train &amp; Ship</h3>
+        <p class="text-sm text-gray-600">Eight weeks of labs. Capstone project at the end. Then resume support, interview prep, and alumni network access if you want it. About 38% of graduates land a new role within 90 days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- WHY US — Comparison Table -->
+<section id="why-us" class="py-20 sm:py-28 bg-brand-50" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="mb-14">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950 mb-2"><span class="text-brand-600">Us vs. typical</span> training programs</h2>
+      <p class="text-gray-600 mt-4">We're not trying to be everything to everyone. Here's what's actually different.</p>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b-2 border-brand-200">
+            <th class="text-left py-3 pr-4 font-heading font-semibold text-brand-900">Feature</th>
+            <th class="text-center py-3 px-4 font-heading font-semibold text-brand-600">Gridline Institute</th>
+            <th class="text-center py-3 pl-4 font-heading font-semibold text-gray-500">Typical Alternative</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600">
+          <tr class="border-b border-gray-200">
+            <td class="py-3 pr-4">Lab environments</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">Real multi-server setups with Supremo</td>
+            <td class="py-3 pl-4 text-center text-gray-400">Sandboxed VMs or screenshots</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-3 pr-4">Cohort size</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">12 max</td>
+            <td class="py-3 pl-4 text-center text-gray-400">50–200+</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-3 pr-4">Instructors</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">Active practitioners, still on-call</td>
+            <td class="py-3 pl-4 text-center text-gray-400">Full-time trainers</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-3 pr-4">Capstone project</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">Yes — portfolio-ready</td>
+            <td class="py-3 pl-4 text-center text-gray-400">Multiple-choice exam</td>
+          </tr>
+          <tr class="border-b border-gray-200">
+            <td class="py-3 pr-4">Career support</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">Resume review + alumni network</td>
+            <td class="py-3 pl-4 text-center text-gray-400">Certificate PDF</td>
+          </tr>
+          <tr>
+            <td class="py-3 pr-4">Catch-up policy</td>
+            <td class="py-3 px-4 text-center text-brand-600 font-medium">Roll into next cohort, no charge</td>
+            <td class="py-3 pl-4 text-center text-gray-400">Retake at full price</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- TESTIMONIALS — Metric-driven -->
+<section id="results" class="py-20 sm:py-28 bg-white" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950"><span class="text-brand-600">What graduates</span> actually report</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border-l-4 border-brand-500 bg-white pl-5 py-4">
+        <p class="font-heading font-bold text-2xl text-brand-600 mb-2">3 months</p>
+        <blockquote class="text-gray-600 text-sm mb-3">"Time from finishing the automation track to starting a senior ops role. The capstone was the thing interviewers kept circling back to."</blockquote>
+        <p class="text-sm font-semibold text-brand-900">Derek Mohan</p>
+        <p class="text-xs text-gray-500">Senior Systems Engineer, Cascadia Freight</p>
+      </div>
+      <div class="border-l-4 border-brand-500 bg-white pl-5 py-4">
+        <p class="font-heading font-bold text-2xl text-brand-600 mb-2">47% fewer tickets</p>
+        <blockquote class="text-gray-600 text-sm mb-3">"We sent four people through the remote desktop track. Within two months our helpdesk ticket volume for remote access issues dropped almost in half. The Supremo training alone paid for the whole thing."</blockquote>
+        <p class="text-sm font-semibold text-brand-900">Lisa Bergstrom</p>
+        <p class="text-xs text-gray-500">IT Director, Ridgeway Property Group</p>
+      </div>
+      <div class="border-l-4 border-brand-500 bg-white pl-5 py-4">
+        <p class="font-heading font-bold text-2xl text-brand-600 mb-2">Honestly? Worth it.</p>
+        <blockquote class="text-gray-600 text-sm mb-3">"The scheduling was brutal for me — evening sessions plus a full-time job. But the monitoring track alone changed how I think about alerting. My manager noticed within a month."</blockquote>
+        <p class="text-sm font-semibold text-brand-900">Javier Ruiz</p>
+        <p class="text-xs text-gray-500">Infrastructure Analyst, Pinecrest Medical</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- FAQ -->
+<section id="faq" class="py-20 sm:py-28 bg-brand-50" data-animate>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-brand-950"><span class="text-brand-600">Questions</span> we hear most</h2>
+    </div>
+    <div class="space-y-4">
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          What experience level do I need?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">At least two years in IT operations. You should know your way around a command line. We're not a helpdesk-to-sysadmin bridge — our labs assume baseline server management skills. Career changers with some hands-on experience have done well, but talk to us first so we can be honest about fit.</p>
+      </details>
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          How does the Supremo training work?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">It's part of the Remote Desktop Operations track. You connect to lab machines through Supremo during exercises — setting up unattended access, managing address books, running supervised remote support sessions, configuring session recording. All browser-accessible. No local setup required on your end.</p>
+      </details>
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          What does it cost?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">It depends on the track, cohort size, and how many people you're enrolling. Request a quote — we'll give you specific numbers, not a generic brochure. Payment plans are available, and about a third of our students get their employer to cover it.</p>
+      </details>
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          Is everything remote?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">Yes. Labs, sessions, office hours — all remote since 2020. You access lab environments through your browser. We used to run in-person sessions in Portland, and honestly the remote format ended up working better for working professionals.</p>
+      </details>
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          Will this prepare me for vendor certifications?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">We don't teach to any specific exam. But the skills overlap is real — roughly 60% of graduates pursue a certification afterward and tell us the practical experience made prep significantly easier.</p>
+      </details>
+      <details class="group bg-white p-6 border border-brand-100">
+        <summary class="flex items-center justify-between cursor-pointer list-none font-heading font-semibold text-brand-900">
+          What if I fall behind?
+          <svg class="w-5 h-5 text-brand-600 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+        </summary>
+        <p class="mt-4 text-gray-600">Roll into the next cohort. No extra charge. It happens — life gets complicated. We've had people do this twice. No judgment.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="py-20 sm:py-28 bg-gradient-to-r from-brand-600 to-brand-700" data-animate>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-4">Ready to See What This Costs for Your Team?</h2>
+    <p class="text-brand-100 text-lg mb-8 max-w-2xl mx-auto">Every quote is custom. Tell us how many people, which tracks, and when — and we'll get back to you within 48 hours with real numbers.</p>
+    <a href="#contact" class="inline-flex items-center px-8 py-3.5 bg-white text-brand-700 font-semibold uppercase tracking-wide text-base hover:bg-brand-50 transition-all">Request Your Quote</a>
+  </div>
+</section>
+
+<!-- NEWSLETTER (secondary goal) -->
+<section class="py-14 bg-white" data-animate>
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+    <h3 class="font-heading font-bold text-xl text-brand-950 mb-2">Monthly Ops Digest</h3>
+    <p class="text-sm text-gray-600 mb-4">One email a month. Sysadmin career insights, lab tips, and cohort openings. No spam, ever.</p>
+    <form action="#" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); this.innerHTML='<p class=\'text-brand-600 font-semibold py-2\'>You\'re subscribed. Check your inbox.</p>';">
+      <input type="email" name="email" placeholder="Your email" required class="flex-1 px-4 py-2.5 border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+      <button type="submit" class="px-6 py-2.5 bg-brand-600 text-white font-semibold text-sm uppercase tracking-wide hover:bg-brand-700 transition-all">Subscribe</button>
+    </form>
+    <p class="text-xs text-gray-500 mt-2">We'll use your email to send the digest. See our <a href="privacy.html" class="underline hover:text-brand-600">Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider-double mx-auto"></div>
+
+<!-- CONTACT / QUOTE REQUEST -->
+<section id="contact" class="py-20 sm:py-28 bg-brand-50" data-animate>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16">
+      <div class="lg:col-span-2">
+        <h2 class="font-heading font-bold text-3xl text-brand-950 mb-6"><span class="text-brand-600">Get a quote</span> for your team</h2>
+        <p class="text-gray-600 mb-8">Tell us about your situation — team size, which tracks interest you, timeline. We'll put together pricing that reflects what you actually need.</p>
+        <div class="space-y-4">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <div>
+              <p class="font-semibold text-brand-900 text-sm">Gridline Institute LLC</p>
+              <p class="text-sm text-gray-600">811 SW Naito Pkwy, Suite 420<br>Portland, OR 97204</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+            <div>
+              <a href="tel:+15032768134" class="font-semibold text-brand-600 hover:text-brand-700 text-sm">+1 (503) 276-8134</a>
+              <p class="text-xs text-gray-500">Mon–Fri 8 AM – 5 PM PT</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            <a href="mailto:info@gridlineinstitute.com" class="font-semibold text-brand-600 hover:text-brand-700 text-sm">info@gridlineinstitute.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-3">
+        <form action="thanks.html" method="POST" class="bg-white border border-brand-100 p-6 sm:p-8">
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-brand-900 mb-1">Name</label>
+              <input type="text" id="name" name="name" required class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+            </div>
+            <div>
+              <label for="company" class="block text-sm font-medium text-brand-900 mb-1">Company</label>
+              <input type="text" id="company" name="company" class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="email" class="block text-sm font-medium text-brand-900 mb-1">Email</label>
+              <input type="email" id="email" name="email" required class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+            </div>
+            <div>
+              <label for="phone" class="block text-sm font-medium text-brand-900 mb-1">Phone</label>
+              <input type="tel" id="phone" name="phone" class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label for="team-size" class="block text-sm font-medium text-brand-900 mb-1">Number of People</label>
+              <select id="team-size" name="team_size" class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                <option value="">Select</option>
+                <option value="1">Just me</option>
+                <option value="2-5">2–5</option>
+                <option value="6-15">6–15</option>
+                <option value="16-50">16–50</option>
+                <option value="50+">50+</option>
+              </select>
+            </div>
+            <div>
+              <label for="timeline" class="block text-sm font-medium text-brand-900 mb-1">Timeline</label>
+              <select id="timeline" name="timeline" class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors">
+                <option value="">Select</option>
+                <option value="asap">ASAP</option>
+                <option value="1-3months">1–3 months</option>
+                <option value="3-6months">3–6 months</option>
+                <option value="exploring">Just exploring</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-brand-900 mb-2">Tracks of interest</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="tracks" value="remote-desktop" class="text-brand-600 focus:ring-brand-500"> Remote Desktop Ops</label>
+              <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="tracks" value="security" class="text-brand-600 focus:ring-brand-500"> Security Hardening</label>
+              <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="tracks" value="automation" class="text-brand-600 focus:ring-brand-500"> Infrastructure Automation</label>
+              <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer"><input type="checkbox" name="tracks" value="monitoring" class="text-brand-600 focus:ring-brand-500"> Monitoring &amp; Incident Response</label>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label for="notes" class="block text-sm font-medium text-brand-900 mb-1">Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="3" class="w-full px-4 py-2.5 border border-gray-300 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors resize-none" placeholder="Anything else we should know — budget constraints, scheduling preferences, specific skills you're targeting..."></textarea>
+          </div>
+          <button type="submit" class="w-full px-6 py-3 bg-brand-600 text-white font-semibold uppercase tracking-wide hover:bg-brand-700 transition-all">Request My Quote</button>
+          <p class="text-xs text-gray-500 mt-3">Your data is processed per our <a href="privacy.html" class="underline hover:text-brand-600">Privacy Policy</a>. We'll respond within 48 hours.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER — Dark Gradient -->
+<footer class="bg-gradient-to-b from-brand-900 to-brand-950">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+      <div>
+        <a href="#" class="flex items-center gap-2 mb-4">
+          <svg class="w-7 h-7" viewBox="0 0 32 32" aria-hidden="true"><polygon points="16,1 29,8.5 29,23.5 16,31 3,23.5 3,8.5" fill="#be185d"/><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-weight="700" font-size="11" fill="white">GI</text></svg>
+          <span class="font-heading font-bold text-white text-sm">Gridline Institute</span>
+        </a>
+        <p class="text-sm text-brand-300 mb-4">Professional development courses for system administrators. Portland, OR.</p>
+        <p class="text-sm text-brand-400">EIN: 82-4739158</p>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold text-white mb-4 text-sm uppercase tracking-wider">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#courses" class="text-sm text-brand-300 hover:text-white transition-colors">Courses</a></li>
+          <li><a href="#why-us" class="text-sm text-brand-300 hover:text-white transition-colors">Why Us</a></li>
+          <li><a href="#results" class="text-sm text-brand-300 hover:text-white transition-colors">Results</a></li>
+          <li><a href="#faq" class="text-sm text-brand-300 hover:text-white transition-colors">FAQ</a></li>
+          <li><a href="#contact" class="text-sm text-brand-300 hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-heading font-semibold text-white mb-4 text-sm uppercase tracking-wider">Contact</h4>
+        <address class="not-italic text-sm text-brand-300 space-y-2">
+          <p>Gridline Institute LLC</p>
+          <p>811 SW Naito Pkwy, Suite 420<br>Portland, OR 97204</p>
+          <p><a href="tel:+15032768134" class="hover:text-white transition-colors">+1 (503) 276-8134</a></p>
+          <p><a href="mailto:info@gridlineinstitute.com" class="hover:text-white transition-colors">info@gridlineinstitute.com</a></p>
+        </address>
+        <div class="mt-4 space-x-4 text-sm">
+          <a href="privacy.html" class="text-brand-400 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="terms.html" class="text-brand-400 hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-brand-800 text-center">
+      <p class="text-sm text-brand-400">&copy; 2026 Gridline Institute LLC. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" class="fixed bottom-0 inset-x-0 z-50 hidden">
+  <div class="max-w-lg mx-auto px-4 pb-4">
+    <div class="bg-brand-950 border border-brand-800 p-5 shadow-2xl">
+      <p class="text-sm text-brand-200 mb-4">This site stores cookies for analytics. Nothing personal is shared with third parties. <a href="privacy.html" class="underline text-white hover:text-brand-300">Privacy Policy</a>.</p>
+      <div class="flex gap-3">
+        <button id="cookie-reject" class="flex-1 px-4 py-2 text-sm font-medium text-brand-300 border border-brand-700 hover:bg-brand-900 transition-colors uppercase tracking-wide">Necessary Only</button>
+        <button id="cookie-accept" class="flex-1 px-4 py-2 text-sm font-medium text-white bg-brand-600 hover:bg-brand-500 transition-colors uppercase tracking-wide">Accept All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
